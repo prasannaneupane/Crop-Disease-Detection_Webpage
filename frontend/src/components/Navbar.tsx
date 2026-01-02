@@ -1,6 +1,13 @@
 import { NavLink } from 'react-router-dom'
 
-const navItems = [
+import type { ReactElement } from 'react'
+
+interface NavItem {
+  label: string
+  to: string
+}
+
+const navItems: NavItem[] = [
   { label: 'Home', to: '/' },
   { label: 'Features', to: '/features' },
   { label: 'Detect', to: '/detect' },
@@ -8,7 +15,7 @@ const navItems = [
   { label: 'Get Started', to: '/get-started' },
 ]
 
-export default function Navbar() {
+export default function Navbar(): ReactElement {
   return (
     <header className="nav">
       <div className="container nav__inner">
@@ -22,9 +29,7 @@ export default function Navbar() {
             <NavLink
               key={item.to}
               to={item.to}
-              className={({ isActive }) =>
-                `nav__link ${isActive ? 'nav__link--active' : ''}`
-              }
+              className={({ isActive }) => `nav__link ${isActive ? 'nav__link--active' : ''}`}
               end={item.to === '/'}
             >
               {item.label}

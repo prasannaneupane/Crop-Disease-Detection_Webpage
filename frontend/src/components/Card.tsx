@@ -1,8 +1,17 @@
+import type { ReactElement, ReactNode } from 'react'
+
+interface CardProps {
+  title?: string
+  icon?: ReactNode
+  children?: ReactNode
+  className?: string
+}
+
 /**
  * Reusable card container.
  * Used for features, steps, and content blocks.
  */
-export default function Card({ title, icon, children, className = '' }) {
+export default function Card({ title, icon, children, className = '' }: CardProps): ReactElement {
   return (
     <div className={`card ${className}`.trim()}>
       {(icon || title) && (

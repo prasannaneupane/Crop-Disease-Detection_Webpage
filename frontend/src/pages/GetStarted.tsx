@@ -1,8 +1,16 @@
 import Button from '../components/Button'
 import Card from '../components/Card'
 
+import type { ReactElement } from 'react'
+
+interface Step {
+  title: string
+  icon: string
+  text: string
+}
+
 // Intentionally simple: clear steps for a university demo and portfolio.
-const steps = [
+const steps: Step[] = [
   {
     title: 'Open Detect',
     icon: '1️⃣',
@@ -20,15 +28,13 @@ const steps = [
   },
 ]
 
-export default function GetStarted() {
+export default function GetStarted(): ReactElement {
   return (
     <section className="section">
       <div className="container">
         <div className="sectionHeader">
           <h2 className="sectionHeader__title">Get Started</h2>
-          <p className="sectionHeader__subtitle">
-            A simple, repeatable flow designed for demos and real usage.
-          </p>
+          <p className="sectionHeader__subtitle">A simple, repeatable flow designed for demos and real usage.</p>
         </div>
 
         <div className="grid grid--3">
@@ -44,7 +50,9 @@ export default function GetStarted() {
             <h3 className="ctaBand__title">Ready to try it?</h3>
             <p className="ctaBand__text muted">Jump to Detect and upload an image.</p>
           </div>
-          <Button to="/detect" variant="primary">Go to Detect</Button>
+          <Button to="/detect" variant="primary">
+            Go to Detect
+          </Button>
         </div>
       </div>
     </section>

@@ -1,0 +1,119 @@
+.how-container {
+  min-height: 100vh;
+  background: #fff;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.subtitle {
+  color: #c48b8b;
+  margin-top: 10px;
+  margin-bottom: 80px;
+}
+
+/* Layout */
+.boxes {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  height: 300px;
+  margin: auto;
+}
+
+/* Base box */
+.box {
+  position: absolute;
+  width: 180px;
+  height: 70px;
+  opacity: 0;
+}
+
+/* Colors */
+.green {
+  background: #0a8a0a;
+}
+
+.pink {
+  background: #ff9c9c;
+}
+
+/* Positions */
+.left {
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: slideLeft 1.2s ease forwards;
+}
+
+.right {
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: slideRight 1.2s ease forwards;
+}
+
+.top {
+  left: 50%;
+  top: 40px;
+  transform: translateX(-50%);
+  animation: fadeDown 1.2s ease forwards;
+  animation-delay: 0.3s;
+}
+
+.bottom {
+  left: 50%;
+  bottom: 40px;
+  transform: translateX(-50%);
+  animation: fadeUp 1.2s ease forwards;
+  animation-delay: 0.6s;
+}
+
+/* Animations */
+@keyframes slideLeft {
+  from {
+    transform: translate(-60px, -50%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(0, -50%);
+    opacity: 1;
+  }
+}
+
+@keyframes slideRight {
+  from {
+    transform: translate(60px, -50%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(0, -50%);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeDown {
+  from {
+    transform: translate(-50%, -40px);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    transform: translate(-50%, 40px);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}

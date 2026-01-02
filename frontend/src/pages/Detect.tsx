@@ -1,9 +1,17 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
+
 import Button from '../components/Button'
 import Card from '../components/Card'
 
-function formatBytes(bytes) {
-  if (!bytes && bytes !== 0) return ''
+import type {
+  ChangeEvent,
+  DragEvent,
+  KeyboardEvent,
+  ReactElement,
+} from 'react'
+
+function formatBytes(bytes: number | null | undefined): string {
+  if (bytes === null || bytes === undefined) return ''
   const units = ['B', 'KB', 'MB', 'GB']
   let i = 0
   let v = bytes
@@ -14,12 +22,12 @@ function formatBytes(bytes) {
   return `${v.toFixed(v >= 10 || i === 0 ? 0 : 1)} ${units[i]}`
 }
 
-export default function Detect() {
-  const inputRef = useRef(null)
-  const [file, setFile] = useState(null)
-  const [isDragging, setIsDragging] = useState(false)
+export default function Detect(): ReactElement {
+  const inputRef = useRef<HTMLInputElement | null>(null)
+  const [file, setFile] = useState<File | null>(null)
+  const [isDragging, setIsDragging] = useState<boolean>(false)
 
-  const previewUrl = useMemo(() => {
+  const previewUrl = useMemo<string | null>(() => {
     if (!file) return null
     return URL.createObjectURL(file)
   }, [file])
@@ -31,17 +39,17 @@ export default function Detect() {
     }
   }, [previewUrl])
 
-  function onPickFile(nextFile) {
+  function onPickFile(nextFile: File | undefined): void {
     if (!nextFile) return
     if (!nextFile.type?.startsWith('image/')) return
     setFile(nextFile)
   }
 
-  function onBrowse() {
+  function onBrowse(): void {
     inputRef.current?.click()
   }
 
-  function onDrop(e) {
+  function onDrop(e: DragEvent<HTMLDivElement>): void {
     e.preventDefault()
     setIsDragging(false)
 
@@ -49,25 +57,29 @@ export default function Detect() {
     onPickFile(dropped)
   }
 
-  function onDragOver(e) {
+  function onDragOver(e: DragEvent<HTMLDivElement>): void {
     e.preventDefault()
     setIsDragging(true)
   }
 
-  function onDragLeave() {
+  function onDragLeave(): void {
     setIsDragging(false)
   }
 
-  function onKeyDown(e) {
+  function onKeyDown(e: KeyboardEvent<HTMLDivElement>): void {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault()
       onBrowse()
     }
   }
 
-  function onClear() {
+  function onClear(): void {
     setFile(null)
     if (inputRef.current) inputRef.current.value = ''
+  }
+
+  function onChangeFile(e: ChangeEvent<HTMLInputElement>): void {
+    onPickFile(e.target.files?.[0])
   }
 
   return (
@@ -98,7 +110,9 @@ export default function Detect() {
                   <p className="dropzone__hint muted">or browse from your device</p>
 
                   <div className="dropzone__actions">
-                    <Button onClick={onBrowse} variant="primary">Browse</Button>
+                    <Button onClick={onBrowse} variant="primary">
+                      Browse
+                    </Button>
                     <Button onClick={onClear} variant="ghost" disabled={!file}>
                       Clear
                     </Button>
@@ -109,7 +123,7 @@ export default function Detect() {
                     className="srOnly"
                     type="file"
                     accept="image/*"
-                    onChange={(e) => onPickFile(e.target.files?.[0])}
+                    onChange={onChangeFile}
                   />
                 </div>
               </div>
@@ -130,13 +144,15 @@ export default function Detect() {
               {!file ? (
                 <div className="emptyState">
                   <p className="emptyState__title">No image selected</p>
-                  <p className="emptyState__text muted">
-                    Choose an image to preview it here.
-                  </p>
+                  <p className="emptyState__text muted">Choose an image to preview it here.</p>
                 </div>
               ) : (
                 <div className="preview">
-                  <img className="preview__img" src={previewUrl} alt="Selected crop" />
+                  <img
+                    className="preview__img"
+                    src={previewUrl ?? ''}
+                    alt="Selected crop"
+                  />
                 </div>
               )}
             </Card>

@@ -1,17 +1,20 @@
-import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
+
+import type { ReactElement } from 'react'
 
 import Navbar from './components/Navbar'
 
-import Home from './pages/Home'
-import Features from './pages/Features'
-import Detect from './pages/Detect'
 import About from './pages/About'
+import Detect from './pages/Detect'
+import Features from './pages/Features'
 import GetStarted from './pages/GetStarted'
+import Home from './pages/Home'
 
-export default function App() {
+export default function App(): ReactElement {
   // Keeps navigation feeling “app-like” by scrolling to top on route changes.
   const location = useLocation()
+
   useEffect(() => {
     // "instant" isn't a standard value; keep it deterministic.
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })

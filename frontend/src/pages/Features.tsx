@@ -1,6 +1,14 @@
 import Card from '../components/Card'
 
-const features = [
+import type { ReactElement } from 'react'
+
+interface Feature {
+  title: string
+  icon: string
+  text: string
+}
+
+const features: Feature[] = [
   {
     title: 'Image-based detection',
     icon: '🖼️',
@@ -23,7 +31,7 @@ const features = [
   },
 ]
 
-export default function Features() {
+export default function Features(): ReactElement {
   return (
     <section className="section">
       <div className="container">
@@ -35,9 +43,9 @@ export default function Features() {
         </div>
 
         <div className="grid grid--4">
-          {features.map((f) => (
-            <Card key={f.title} title={f.title} icon={f.icon}>
-              <p className="muted">{f.text}</p>
+          {features.map((feature) => (
+            <Card key={feature.title} title={feature.title} icon={feature.icon}>
+              <p className="muted">{feature.text}</p>
             </Card>
           ))}
         </div>
