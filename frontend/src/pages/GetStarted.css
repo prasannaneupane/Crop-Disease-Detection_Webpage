@@ -1,0 +1,23 @@
+/* Get Started page styles */
+
+/* CTA band */
+.ctaBand {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(46, 229, 157, 0.18);
+  background: rgba(46, 229, 157, 0.08);
+}
+
+.ctaBand__title {
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.ctaBand__text {
+  margin: 6px 0 0;
+}

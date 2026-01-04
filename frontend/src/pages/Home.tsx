@@ -1,4 +1,5 @@
 import Button from '../components/Button'
+import './Home.css'
 import './howitworks.css'
 
 import type { ReactElement } from 'react'

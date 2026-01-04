@@ -1,5 +1,6 @@
 import Button from '../components/Button'
 import Card from '../components/Card'
+import './GetStarted.css'
 
 import type { ReactElement } from 'react'
 

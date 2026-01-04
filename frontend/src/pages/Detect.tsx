@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 
+import './Detect.css'
+
 import Button from '../components/Button'
 import Card from '../components/Card'
 

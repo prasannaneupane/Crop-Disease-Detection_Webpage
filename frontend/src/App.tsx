@@ -41,10 +41,10 @@ export default function App(): ReactElement {
       <footer className="footer">
         <div className="container footer__inner">
           <p className="footer__text">
-            © {new Date().getFullYear()} Crop Disease Detection — University demo UI
+            © {new Date().getFullYear()} Crop Disease Detection — Khwopa College Of Engineering
           </p>
           <p className="footer__text footer__muted">
-            Frontend-only prototype (no ML inference wired)
+            Frontend-only prototype 
           </p>
         </div>
       </footer>
